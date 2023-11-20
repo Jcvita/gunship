@@ -18,9 +18,9 @@ def hash_directory(directory, blacklist=[]):
     print("Hashing directory: " + directory)
     items = {}
     for item in os.listdir(directory):
-        if item in blacklist:
-            continue
         path = os.path.join(directory, item)
+        if path in blacklist:
+            continue
         if os.path.isfile(path):
             items[item] = hash_file(path)
         elif os.path.isdir(path):
