@@ -1,1 +1,0 @@
-C:\Users\jcvit\Projects\gunship\target\debug\libblueteamtool.rlib: C:\Users\jcvit\Projects\gunship\src\graphics.rs C:\Users\jcvit\Projects\gunship\src\lib.rs C:\Users\jcvit\Projects\gunship\src\tui.rs
