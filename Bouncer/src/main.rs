@@ -15,7 +15,7 @@ fn main() {
     }
 
     println!("\nuser processes:");
-    for process in bouncer.get_user_processes(guests.get("test").unwrap().id().to_string()) {
+    for process in bouncer.get_user_processes(guests.get("jcvit").unwrap().id().to_string()) {
         println!("{}", process.name());
     }
 

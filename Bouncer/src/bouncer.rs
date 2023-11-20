@@ -27,11 +27,10 @@ impl Bouncer {
         }
     }
 
-    pub fn guest_list(&mut self) -> HashMap<String, &User> {
-        self.worksite.refresh_users_list();
-        let mut guests = HashMap::new();
+    pub fn guest_list(&self) -> HashMap<String, &User> {
+        let mut guests: HashMap<String, &User> = HashMap::new();
         for guest in self.worksite.users() {
-            guests.insert(guest.name().to_string(), guest.clone());
+            guests.insert(guest.name().to_string(), guest);
         }
         guests
     }
@@ -43,8 +42,16 @@ impl Bouncer {
 
     // We clone the Process to store it instead of a reference.
     pub fn flag_happening(&mut self, process: Process) {
-        let pid = process.pid().to_string();
+        let pid: String = process.pid().to_string();
         self.flagged_happenings.push(pid);
+    }
+
+    pub fn update_users(&mut self) {
+        self.worksite.refresh_users_list();
+    }
+
+    pub fn update_processes(&mut self) {
+        self.worksite.refresh_processes();
     }
 
     // // We need to remove the mutable reference to self because we can't send it across threads safely.
@@ -68,8 +75,7 @@ impl Bouncer {
     //     });
     // }
 
-    pub fn get_user_processes(&mut self, uid: String) -> Vec<&Process> {
-        self.worksite.refresh_processes();
+    pub fn get_user_processes(&self, uid: String) -> Vec<&Process> {
         let mut procs: Vec<&Process> = self.worksite.processes().values().collect();
         procs.retain(|proc| proc.user_id().unwrap().to_string() == uid);
         procs
