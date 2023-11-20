@@ -27,10 +27,10 @@ def hash_directory(directory, blacklist=[]):
             items[item] = hash_directory(path)
     return items
 
-def main(directories):
+def main(directories, blacklist=[]):
     all_hashes = {}
     for directory in directories:
-        all_hashes[directory] = hash_directory(directory)
+        all_hashes[directory] = hash_directory(directory, blacklist)
     
     with open('directory_hashes.json', 'w') as f:
         json.dump(all_hashes, f, indent=4)
@@ -39,4 +39,4 @@ if __name__ == "__main__":
     # directories = ['/bin', '/boot', '/sys', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc']
     directories = ['/bin', '/boot', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc', '/sys/kernel', '/sys/module']
     blacklist = ['/sys/kernel/debug']
-    main(directories)
+    main(directories, blacklist)
