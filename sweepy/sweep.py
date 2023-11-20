@@ -38,5 +38,5 @@ def main(directories, blacklist=[]):
 if __name__ == "__main__":
     # directories = ['/bin', '/boot', '/sys', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc']
     directories = ['/bin', '/boot', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc', '/sys/kernel', '/sys/module']
-    blacklist = ['/sys/kernel/debug']
+    blacklist = ['/sys/kernel/debug', '/sys/module/hid']
     main(directories, blacklist)
