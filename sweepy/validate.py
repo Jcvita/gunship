@@ -16,18 +16,18 @@ def hash_file(filepath):
 def compare_hashes(system_hashes, stored_hashes):
     for item, system_hash in system_hashes.items():
         if item not in stored_hashes:
-            print(f"A file has been added: {item}")
+            print("A file has been added:" + item)
         elif isinstance(system_hash, dict):
             if isinstance(stored_hashes[item], dict):
                 compare_hashes(system_hash, stored_hashes[item])
             else:
-                print(f"Mismatch found for directory: {item}")
+                print("Mismatch found for directory:" + item)
         else:
             if system_hash != stored_hashes[item]:
-                print(f"Hash mismatch for file: {item}")
+                print("Hash mismatch for file:" + item)
     for item in stored_hashes:
         if item not in system_hashes:
-            print(f"A file has been removed: {item}")
+            print("A file has been removed:" + item)
 
 def get_system_hashes(directory):
     items = {}
@@ -48,14 +48,14 @@ def main(json_file, directory=None):
         if directory in stored_hashes:
             compare_hashes(system_hashes[directory], stored_hashes[directory])
         else:
-            print(f"No stored hashes for directory: {directory}")
+            print("No stored hashes for directory:" + directory)
     else:
         for dir_path, dir_hashes in stored_hashes.items():
             if os.path.exists(dir_path):
                 system_hashes = get_system_hashes(dir_path)
                 compare_hashes(system_hashes, dir_hashes)
             else:
-                print(f"Directory does not exist: {dir_path}")
+                print("Directory does not exist: " + dir_path)
 
 if __name__ == "__main__":
     json_file = 'directory_hashes.json'
