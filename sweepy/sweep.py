@@ -14,7 +14,7 @@ def hash_file(filepath):
     return hasher.hexdigest()
 
 def hash_directory(directory):
-    print(f"Hashing directory: {directory}")
+    print("Hashing directory: " + directory)
     items = {}
     for item in os.listdir(directory):
         path = os.path.join(directory, item)
