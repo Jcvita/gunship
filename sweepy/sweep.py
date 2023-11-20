@@ -13,10 +13,13 @@ def hash_file(filepath):
         pass # TODO notify of permission issues
     return hasher.hexdigest()
 
-def hash_directory(directory):
+def hash_directory(directory, blacklist=[]):
+    
     print("Hashing directory: " + directory)
     items = {}
     for item in os.listdir(directory):
+        if item in blacklist:
+            continue
         path = os.path.join(directory, item)
         if os.path.isfile(path):
             items[item] = hash_file(path)
@@ -35,4 +38,5 @@ def main(directories):
 if __name__ == "__main__":
     # directories = ['/bin', '/boot', '/sys', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc']
     directories = ['/bin', '/boot', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc', '/sys/kernel', '/sys/module']
+    blacklist = ['/sys/kernel/debug']
     main(directories)
