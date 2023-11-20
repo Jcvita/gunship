@@ -33,5 +33,6 @@ def main(directories):
         json.dump(all_hashes, f, indent=4)
 
 if __name__ == "__main__":
-    directories = ['/bin', '/boot', '/sys', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc']
+    # directories = ['/bin', '/boot', '/sys', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc']
+    directories = ['/bin', '/boot', '/home', '/root', '/tmp', '/usr', '/var', '/sbin', '/etc']
     main(directories)
