@@ -1,4 +1,7 @@
 #!/bin/bash
+
+trap '' SIGINT
+
 clear
 cat /etc/motd
 echo "$(whoami)@$(hostname):~$ █"
