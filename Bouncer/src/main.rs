@@ -4,7 +4,7 @@ pub mod bouncer;
 
 fn main() {
     let mut bouncer = Bouncer::hire();
-    // let possible_shells = vec!["bash", "sh", "dash", "rbash", "zsh", "fish", "csh", "tcsh", "ksh", "ash", "dash", "busybox"];
+    // let possible_shells = vec!["bash", "sh", "dash", "rbash", "zsh", "fish", "csh", "tcsh", "ksh", "ash", "busybox", "sysctl"];
 
     let guests = bouncer.guest_list();
 

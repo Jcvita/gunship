@@ -13,7 +13,7 @@ pub struct Bouncer {
 
 impl Bouncer {
     // We take ownership of the Party instead of a mutable reference.
-    pub fn hire() -> Self {
+    pub fn hire() -> Bouncer {
         let mut sys = System::new_all();
         sys.refresh_users_list();
         sys.refresh_processes();
