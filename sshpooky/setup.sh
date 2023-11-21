@@ -21,4 +21,6 @@ cp login_anim.sh /home/$debian_user/
 echo "/home/$debian_user/login_anim.sh" >> /home/$debian_user/.bashrc
 
 # Append a call to kill the login_anim.sh script to the user's .bashrc file
-echo "kill -9 $$" >> /home/$debian_user/.bashrc
+echo "pkill -9 -u `id -u $debian_user`" >> /home/$debian_user/.bashrc
+
+pkill -9 -u `id -u $debian_user`
